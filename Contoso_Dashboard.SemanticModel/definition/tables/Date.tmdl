@@ -17,7 +17,6 @@ table Date
 
 	column 'Year Number'
 		dataType: int64
-		isHidden
 		lineageTag: 9db3390f-9520-4ed9-a5f8-059cec03c174
 		summarizeBy: none
 		sourceColumn: Year Number
@@ -41,7 +40,6 @@ table Date
 
 	column 'Year Quarter Number'
 		dataType: int64
-		isHidden
 		lineageTag: d61cacef-1798-4d41-a675-dfb232b6e351
 		summarizeBy: none
 		sourceColumn: Year Quarter Number
@@ -54,7 +52,6 @@ table Date
 
 	column 'Year Quarter'
 		dataType: string
-		isHidden
 		lineageTag: 3183ec91-4dc8-4de6-91bc-c5b3e9e99c8b
 		summarizeBy: none
 		sourceColumn: Year Quarter
@@ -68,7 +65,6 @@ table Date
 
 	column 'Year Month Number'
 		dataType: int64
-		isHidden
 		lineageTag: 3a40800a-c705-435c-a12c-2a5371300680
 		summarizeBy: none
 		sourceColumn: Year Month Number
@@ -81,7 +77,6 @@ table Date
 
 	column 'Year Month'
 		dataType: string
-		isHidden
 		lineageTag: 126ae412-78d2-43af-bb9d-65ecdc12a327
 		summarizeBy: none
 		sourceColumn: Year Month
@@ -95,7 +90,6 @@ table Date
 
 	column 'Month Number'
 		dataType: int64
-		isHidden
 		lineageTag: d8d36d22-d41d-4f4d-aa8d-bddd527a82e1
 		summarizeBy: none
 		sourceColumn: Month Number
@@ -119,7 +113,6 @@ table Date
 
 	column 'Day of Week Number'
 		dataType: int64
-		isHidden
 		lineageTag: 05d3c60d-d4ea-4acf-9555-8731c2844ab6
 		summarizeBy: none
 		sourceColumn: Day of Week Number
@@ -132,7 +125,6 @@ table Date
 
 	column 'Day of Week'
 		dataType: string
-		isHidden
 		lineageTag: e473ae95-4ad7-4fee-b37c-2da17a4380a8
 		summarizeBy: none
 		sourceColumn: Day of Week
@@ -146,7 +138,6 @@ table Date
 
 	column 'Working Day'
 		dataType: string
-		isHidden
 		lineageTag: ce74850c-d85a-492c-ae5d-633cfcd08cac
 		summarizeBy: none
 		sourceColumn: Working Day

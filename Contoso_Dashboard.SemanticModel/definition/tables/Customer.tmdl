@@ -41,7 +41,6 @@ table Customer
 
 	column 'Marital Status'
 		dataType: string
-		isHidden
 		lineageTag: a54314c9-8b6d-48f5-91c7-79c08ab11f57
 		summarizeBy: none
 		sourceColumn: Marital Status
@@ -122,7 +121,6 @@ table Customer
 
 	column Continent
 		dataType: string
-		isHidden
 		lineageTag: f52ce7fc-720b-45bc-9ede-de04b4a4d7b4
 		summarizeBy: none
 		sourceColumn: Continent
@@ -135,7 +133,6 @@ table Customer
 
 	column City
 		dataType: string
-		isHidden
 		lineageTag: e269bbec-ef49-4a34-9585-f031a3899477
 		summarizeBy: none
 		sourceColumn: City
@@ -148,7 +145,6 @@ table Customer
 
 	column State
 		dataType: string
-		isHidden
 		lineageTag: c123b5f1-0dfa-40b6-b783-074cdf86df75
 		summarizeBy: none
 		sourceColumn: State
@@ -174,7 +170,6 @@ table Customer
 
 	column 'Customer Type'
 		dataType: string
-		isHidden
 		lineageTag: cfc1b86e-b9d4-4ce8-8ce0-f997b17d4799
 		summarizeBy: none
 		sourceColumn: Customer Type
@@ -187,7 +182,6 @@ table Customer
 
 	column CountryRegion
 		dataType: string
-		isHidden
 		lineageTag: 5de536da-9d94-474d-9077-17e5bb4e810f
 		summarizeBy: none
 		sourceColumn: CountryRegion

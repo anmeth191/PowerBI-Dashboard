@@ -5,11 +5,11 @@ table Sales
 		formatString: #,0.00
 		lineageTag: 22f49b66-16ee-4044-bf38-c5172fe6ee24
 
-	measure '# Sales' = COUNTROWS ( Sales )
+	measure 'Total Orders' = COUNTROWS ( Sales )
 		formatString: #,0
 		lineageTag: f55fa0cb-4271-4214-a759-03eb66f48047
 
-	measure '# Customers' = DISTINCTCOUNT( Sales[CustomerKey] )
+	measure 'Total Customers' = DISTINCTCOUNT( Sales[CustomerKey] )
 		formatString: #,0
 		lineageTag: 8593b3c9-2406-40fe-aaea-276cfaeb33cb
 
