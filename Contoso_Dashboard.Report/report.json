@@ -9,7 +9,17 @@
       "filters": "[]",
       "height": 720.00,
       "name": "7fc51a28dd73e97033f6",
-      "visualContainers": [],
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"cb067a5e8e9af0353a82\",\"layouts\":[{\"id\":0,\"position\":{\"x\":9.72644376899696,\"y\":128.3890577507599,\"z\":0,\"width\":782.9787234042553,\"height\":591.3677811550152,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Date.Calendar.Year\"},{\"queryRef\":\"Date.Calendar.Month\"},{\"queryRef\":\"Sales.Sales Amount\"},{\"queryRef\":\"Sales.PreviousYearSales\"},{\"queryRef\":\"Customer.Sales_difference_comparison\"},{\"queryRef\":\"Sales.YearToDate_Sales\"},{\"queryRef\":\"Sales.PreviousYTD_Sales\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Date\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"Sales\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Sales Amount\"},\"Name\":\"Sales.Sales Amount\",\"NativeReferenceName\":\"Sales Amount\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Hierarchy\":\"Calendar\"}},\"Level\":\"Year\"},\"Name\":\"Date.Calendar.Year\",\"NativeReferenceName\":\"Calendar Year\"},{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Hierarchy\":\"Calendar\"}},\"Level\":\"Month\"},\"Name\":\"Date.Calendar.Month\",\"NativeReferenceName\":\"Calendar Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"PreviousYearSales\"},\"Name\":\"Sales.PreviousYearSales\",\"NativeReferenceName\":\"PreviousYearSales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"Sales_difference_comparison\"},\"Name\":\"Customer.Sales_difference_comparison\",\"NativeReferenceName\":\"Sales_difference_comparison\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"YearToDate_Sales\"},\"Name\":\"Sales.YearToDate_Sales\",\"NativeReferenceName\":\"YearToDate_Sales\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"PreviousYTD_Sales\"},\"Name\":\"Sales.PreviousYTD_Sales\",\"NativeReferenceName\":\"PreviousYTD_Sales\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"HierarchyLevel\":{\"Expression\":{\"Hierarchy\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Hierarchy\":\"Calendar\"}},\"Level\":\"Year\"}}}]}}}",
+          "filters": "[]",
+          "height": 591.37,
+          "width": 782.98,
+          "x": 9.73,
+          "y": 128.39,
+          "z": 0.00
+        }
+      ],
       "width": 1280.00
     }
   ],

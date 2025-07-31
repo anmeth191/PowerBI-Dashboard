@@ -148,6 +148,13 @@ table Date
 
 		annotation PBI_FormatHint = {"isText":true}
 
+	column LastDateWithSales = 'Date'[Date] <= MAX(Sales[Order Date])
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 23bd5875-20d9-4f7c-8eac-dd5f001eebc1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	hierarchy Calendar
 		lineageTag: 00b45a1e-dc37-40ed-9530-0e90467ae1c7
 

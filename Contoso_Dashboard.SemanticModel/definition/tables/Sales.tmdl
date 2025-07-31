@@ -13,6 +13,60 @@ table Sales
 		formatString: #,0
 		lineageTag: 8593b3c9-2406-40fe-aaea-276cfaeb33cb
 
+	measure ShowValuesForDates = ```
+			
+			var max_date_available = CALCULATE(MAX( Sales[Order Date] ) , REMOVEFILTERS())
+			var date_current_context = MIN('Date'[Date] )
+			return 
+			date_current_context <= max_date_available
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 61d3ed0a-7c89-4848-b1cc-8cbcdee6390f
+
+	measure PreviousYearSales = ```
+			
+			var table_dates = CALCULATETABLE(DATEADD( 'Date'[Date] , -1 , YEAR )  , 'Date'[LastDateWithSales] = TRUE)
+			return 
+			IF( [ShowValuesForDates] , 
+			    CALCULATE( Sales[Sales Amount] ,  DATEADD( 'Date'[Date] , -1 , YEAR )))
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: bf577bb3-e29c-4061-9bee-a0c8a5bc8821
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Sales_difference_comparison = ```
+			
+			var current_year = Sales[Sales Amount] 
+			var previous_year_sales = [PreviousYearSales] 
+			var result = IF( not ISBLANK(current_year) && not ISBLANK(previous_year_sales) , 
+			      current_year - previous_year_sales )
+			      return 
+			      result
+			```
+		formatString: #,0.00
+		lineageTag: 16ecc4dc-b7bd-47ae-967f-cfb024df0130
+
+	measure YearToDate_Sales =
+			
+			CALCULATE( Sales[Sales Amount] , DATESYTD( 'Date'[Date] ))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: e50c80a5-4e1a-4525-9796-d9c39e92c870
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure PreviousYTD_Sales = ```
+			
+			var table_calculate =  CALCULATETABLE(DATEADD('Date'[Date] , -1 , YEAR ) ,  'Date'[LastDateWithSales] = TRUE)
+			RETURN 
+			IF( [ShowValuesForDates] , 
+			CALCULATE( [YearToDate_Sales] , table_calculate ))
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: f2bef7a8-1fb4-4e33-b871-8aaaf2882ff0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
 	column ProductKey
 		dataType: int64
 		isHidden
@@ -54,7 +108,6 @@ table Sales
 
 	column 'Order Date'
 		dataType: dateTime
-		isHidden
 		formatString: mm/dd/yyyy
 		lineageTag: cb9b74f9-efa9-4cd3-9383-a5ac441537f3
 		summarizeBy: none
