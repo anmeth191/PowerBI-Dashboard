@@ -30,10 +30,8 @@ table Sales
 			IF( [ShowValuesForDates] , 
 			    CALCULATE( Sales[Sales Amount] ,  DATEADD( 'Date'[Date] , -1 , YEAR )))
 			```
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: #,0.00
 		lineageTag: bf577bb3-e29c-4061-9bee-a0c8a5bc8821
-
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
 	measure Sales_difference_comparison = ```
 			
@@ -76,6 +74,23 @@ table Sales
 			)
 		formatString: #,0
 		lineageTag: 13d798b3-fecf-402d-a0ec-b82c778aadc2
+
+	measure Previous_year_orders =
+			
+			var date_table = CALCULATETABLE( DATEADD('Date'[Date] , -1 ,YEAR ) , 'Date'[LastDateWithSales] = TRUE )
+			return
+			CALCULATE( [Total Orders] ,  date_table )
+		formatString: #,0
+		lineageTag: edcb7847-3779-4d04-9c83-5a8084ae982a
+
+	measure negative_formatting_YOY = ```
+			
+			var difference = Sales[Sales_difference_comparison] 
+			RETURN
+			SWITCH( TRUE() ,
+			          difference <= 0 , "#e0e0e0" , "#FFFFFF")
+			```
+		lineageTag: 3597573e-6749-4f64-85c7-96f9b657dd1a
 
 	column ProductKey
 		dataType: int64
