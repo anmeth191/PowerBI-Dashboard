@@ -67,6 +67,16 @@ table Sales
 
 		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
 
+	measure CustomersWithMultipleOrders =
+			
+			var table_customer  = SUMMARIZECOLUMNS( Customer[CustomerKey] , "TotalOrders" , DISTINCTCOUNT(Sales[Order Number] ))
+			RETURN
+			COUNTROWS(
+			FILTER( table_customer , [TotalOrders] > 1 )
+			)
+		formatString: #,0
+		lineageTag: 13d798b3-fecf-402d-a0ec-b82c778aadc2
+
 	column ProductKey
 		dataType: int64
 		isHidden
@@ -82,7 +92,6 @@ table Sales
 
 	column CustomerKey
 		dataType: int64
-		isHidden
 		lineageTag: 85e24fb8-5eb7-4ddf-b640-08e1b8e5cab0
 		summarizeBy: none
 		sourceColumn: CustomerKey
@@ -139,7 +148,6 @@ table Sales
 
 	column 'Order Number'
 		dataType: string
-		isHidden
 		lineageTag: 7de2fac0-34ac-496d-9fb9-fb68a0e7da02
 		summarizeBy: none
 		sourceColumn: Order Number
