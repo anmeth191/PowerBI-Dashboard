@@ -2,8 +2,10 @@ table Sales
 	lineageTag: d3319ea4-f2d1-49ae-8869-5191366195b1
 
 	measure 'Sales Amount' = SUMX ( Sales, Sales[Quantity] * Sales[Net Price] )
-		formatString: #,0.00
+		formatString: #,0
 		lineageTag: 22f49b66-16ee-4044-bf38-c5172fe6ee24
+
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Total Orders' = COUNTROWS ( Sales )
 		formatString: #,0
@@ -48,10 +50,10 @@ table Sales
 	measure YearToDate_Sales =
 			
 			CALCULATE( Sales[Sales Amount] , DATESYTD( 'Date'[Date] ))
-		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		formatString: #,0
 		lineageTag: e50c80a5-4e1a-4525-9796-d9c39e92c870
 
-		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure PreviousYTD_Sales = ```
 			
@@ -91,6 +93,14 @@ table Sales
 			          difference <= 0 , "#e0e0e0" , "#FFFFFF")
 			```
 		lineageTag: 3597573e-6749-4f64-85c7-96f9b657dd1a
+
+	measure Filtered_value =
+			
+			var Brand_filtered = CONCATENATEX( VALUES( 'Product'[Brand] )  , 'Product'[Brand]   , ", ")
+			var years_filtered = CONCATENATEX( VALUES('Date'[Year] ) , 'Date'[Year], " and ")
+			return
+			"Details for " & Brand_filtered & " " & "for Period: " & years_filtered
+		lineageTag: 8a488a1b-65b7-40eb-9a22-f7dd140a97e0
 
 	column ProductKey
 		dataType: int64
