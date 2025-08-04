@@ -102,6 +102,15 @@ table Sales
 			"Details for " & Brand_filtered & " " & "for Period: " & years_filtered
 		lineageTag: 8a488a1b-65b7-40eb-9a22-f7dd140a97e0
 
+	measure Icons_for_negative_values = ```
+			
+			var sales_difference = Sales[Sales_difference_comparison]
+			return 
+			IF(sales_difference < 0 , 0 , 1 )
+			```
+		formatString: 0
+		lineageTag: 94a61743-9f00-44f8-be43-8e6eff5c7306
+
 	column ProductKey
 		dataType: int64
 		isHidden
