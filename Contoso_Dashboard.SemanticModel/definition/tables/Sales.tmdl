@@ -90,7 +90,7 @@ table Sales
 			var difference = Sales[Sales_difference_comparison] 
 			RETURN
 			SWITCH( TRUE() ,
-			          difference <= 0 , "#e0e0e0" , "#FFFFFF")
+			          difference <= 0 , "#ffcdd2" , "#FFFFFF")
 			```
 		lineageTag: 3597573e-6749-4f64-85c7-96f9b657dd1a
 
