@@ -1,0 +1,137 @@
+table _Measures
+	lineageTag: bf988a82-341e-4b9b-b1b6-7d1a90e4e49e
+
+	measure CustomersWithMultipleOrders =
+			
+			var table_customer  = SUMMARIZECOLUMNS( Customer[CustomerKey] , "TotalOrders" , DISTINCTCOUNT(Sales[Order Number] ))
+			RETURN
+			COUNTROWS(
+			FILTER( table_customer , [TotalOrders] > 1 )
+			)
+		formatString: #,0
+		displayFolder: Base Calculations
+		lineageTag: 13d798b3-fecf-402d-a0ec-b82c778aadc2
+
+	measure Filtered_value =
+			
+			var Brand_filtered = CONCATENATEX( VALUES( 'Product'[Brand] )  , 'Product'[Brand]   , ", ")
+			var years_filtered = CONCATENATEX( VALUES('Date'[Year] ) , 'Date'[Year], " and ")
+			return
+			"Details for " & Brand_filtered & " " & "for Period: " & years_filtered
+		displayFolder: Formatting
+		lineageTag: 8a488a1b-65b7-40eb-9a22-f7dd140a97e0
+
+	measure Icons_for_negative_values = ```
+			
+			var sales_difference = [Sales_difference_comparison]
+			return 
+			IF(sales_difference < 0 , 0 , 1 )
+			```
+		formatString: 0
+		displayFolder: Formatting
+		lineageTag: 94a61743-9f00-44f8-be43-8e6eff5c7306
+
+	measure negative_formatting_YOY = ```
+			
+			var difference = [Sales_difference_comparison] 
+			RETURN
+			SWITCH( TRUE() ,
+			          difference <= 0 , "#ffcdd2" , "#FFFFFF")
+			```
+		displayFolder: Formatting
+		lineageTag: 3597573e-6749-4f64-85c7-96f9b657dd1a
+
+	measure Previous_year_orders =
+			
+			var date_table = CALCULATETABLE( DATEADD('Date'[Date] , -1 ,YEAR ) , 'Date'[LastDateWithSales] = TRUE )
+			return
+			CALCULATE( [Total Orders] ,  date_table )
+		formatString: #,0
+		displayFolder: Previous Dates Calculations
+		lineageTag: edcb7847-3779-4d04-9c83-5a8084ae982a
+
+	measure PreviousYearSales = ```
+			
+			var table_dates = CALCULATETABLE(DATEADD( 'Date'[Date] , -1 , YEAR )  , 'Date'[LastDateWithSales] = TRUE)
+			return 
+			IF( [ShowValuesForDates] , 
+			    CALCULATE( [Sales Amount] ,  DATEADD( 'Date'[Date] , -1 , YEAR )))
+			```
+		formatString: #,0.00
+		displayFolder: Previous Dates Calculations
+		lineageTag: bf577bb3-e29c-4061-9bee-a0c8a5bc8821
+
+	measure PreviousYTD_Sales = ```
+			
+			var table_calculate =  CALCULATETABLE(DATEADD('Date'[Date] , -1 , YEAR ) ,  'Date'[LastDateWithSales] = TRUE)
+			RETURN 
+			IF( [ShowValuesForDates] , 
+			CALCULATE( [YearToDate_Sales] , table_calculate ))
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Previous Dates Calculations
+		lineageTag: f2bef7a8-1fb4-4e33-b871-8aaaf2882ff0
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure Sales_difference_comparison = ```
+			
+			var current_year = [Sales Amount] 
+			var previous_year_sales = [PreviousYearSales] 
+			var result = IF( not ISBLANK(current_year) && not ISBLANK(previous_year_sales) , 
+			      current_year - previous_year_sales )
+			      return 
+			      result
+			```
+		formatString: #,0.00
+		displayFolder: Previous Dates Calculations
+		lineageTag: 16ecc4dc-b7bd-47ae-967f-cfb024df0130
+
+	measure ShowValuesForDates = ```
+			
+			var max_date_available = CALCULATE(MAX( Sales[Order Date] ) , REMOVEFILTERS())
+			var date_current_context = MIN('Date'[Date] )
+			return 
+			date_current_context <= max_date_available
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Controllers
+		lineageTag: 61d3ed0a-7c89-4848-b1cc-8cbcdee6390f
+
+	measure 'Total Customers' = DISTINCTCOUNT( Sales[CustomerKey] )
+		formatString: #,0
+		displayFolder: Base Calculations
+		lineageTag: 8593b3c9-2406-40fe-aaea-276cfaeb33cb
+
+	measure 'Total Orders' = COUNTROWS ( Sales )
+		formatString: #,0
+		displayFolder: Base Calculations
+		lineageTag: f55fa0cb-4271-4214-a759-03eb66f48047
+
+	measure YearToDate_Sales =
+			
+			CALCULATE( [Sales Amount] , DATESYTD( 'Date'[Date] ))
+		formatString: #,0
+		displayFolder: Previous Dates Calculations
+		lineageTag: e50c80a5-4e1a-4525-9796-d9c39e92c870
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Sales Amount' = SUMX ( Sales, Sales[Quantity] * Sales[Net Price] )
+		formatString: #,0
+		displayFolder: Base Calculations
+		lineageTag: 22f49b66-16ee-4044-bf38-c5172fe6ee24
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition _Measures = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Removed Columns" = Table.RemoveColumns(Source,{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

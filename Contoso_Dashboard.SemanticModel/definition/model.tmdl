@@ -10,14 +10,15 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBIDesktopVersion = 2.145.1602.0 (25.07)+10647c9fa319b5e39936cdb21328038c371d1fe4
 
-annotation PBI_QueryOrder = ["Customer","Date","Product","Product Category","Product Subcategory","Sales"]
+annotation PBI_QueryOrder = ["Customer","Date","Product","Product Category","Product Subcategory","Sales","_Measures"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","TMDLView_Desktop"]
 
 ref table Customer
 ref table Date
 ref table Product
 ref table Sales
+ref table _Measures
 
 ref cultureInfo en-US
 

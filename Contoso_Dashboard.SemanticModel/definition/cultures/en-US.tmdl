@@ -5192,7 +5192,7 @@ cultureInfo en-US
 			    "sale.sales_amount": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "Sales Amount"
 			        }
 			      },
@@ -5324,7 +5324,7 @@ cultureInfo en-US
 			    "sale.total_orders": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "Total Orders"
 			        }
 			      },
@@ -5456,7 +5456,7 @@ cultureInfo en-US
 			    "sale.total_customers": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "Total Customers"
 			        }
 			      },
@@ -5578,7 +5578,7 @@ cultureInfo en-US
 			    "sale.show_values_for_dates": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "ShowValuesForDates"
 			        }
 			      },
@@ -5713,7 +5713,7 @@ cultureInfo en-US
 			    "sale.previous_year_sales": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "PreviousYearSales"
 			        }
 			      },
@@ -5798,7 +5798,7 @@ cultureInfo en-US
 			    "sale.sales_difference_comparison": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "Sales_difference_comparison"
 			        }
 			      },
@@ -5943,7 +5943,7 @@ cultureInfo en-US
 			    "sale.year_to_date_sales": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "YearToDate_Sales"
 			        }
 			      },
@@ -6016,7 +6016,7 @@ cultureInfo en-US
 			    "sale.previous_YTD_sales": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "PreviousYTD_Sales"
 			        }
 			      },
@@ -6075,7 +6075,7 @@ cultureInfo en-US
 			    "sale.customers_with_multiple_orders": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "CustomersWithMultipleOrders"
 			        }
 			      },
@@ -6198,7 +6198,7 @@ cultureInfo en-US
 			    "sale.previous_year_orders": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "Previous_year_orders"
 			        }
 			      },
@@ -6343,7 +6343,7 @@ cultureInfo en-US
 			    "sale.negative_formatting_YOY": {
 			      "Definition": {
 			        "Binding": {
-			          "ConceptualEntity": "Sales",
+			          "ConceptualEntity": "_Measures",
 			          "ConceptualProperty": "negative_formatting_YOY"
 			        }
 			      },
