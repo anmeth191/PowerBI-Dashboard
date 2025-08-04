@@ -5300,7 +5300,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Monthly Sales": {
+			          "Montlhy Sales": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -5310,7 +5310,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Montlhy Sales": {
+			          "Monthly Sales": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
