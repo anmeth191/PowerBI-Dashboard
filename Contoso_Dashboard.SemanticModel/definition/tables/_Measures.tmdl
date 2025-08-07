@@ -124,6 +124,26 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	measure Primary_color_T1 = "#fecb00"
+		displayFolder: Color_Definitions_Theme1
+		lineageTag: 290f2ef0-6230-4bf7-a132-f3cb6f46ad1a
+
+	measure Secondary_color_T1 = "#002496"
+		displayFolder: Color_Definitions_Theme1
+		lineageTag: 3c3fb899-63d9-4caf-a26f-bd6e5adcf3d0
+
+	measure Support_color_T1 = "#807340"
+		displayFolder: Color_Definitions_Theme1
+		lineageTag: 00eaf3ce-ec2a-4827-8dd1-bae27f20e889
+
+	measure Primary_Font_color_T1 = "#141414"
+		displayFolder: Color_Definitions_Theme1
+		lineageTag: 14d07f0f-97e8-4ce2-bed0-ba13e2b629a9
+
+	measure Secondary_Font_color_T1 = "#FFFFFF"
+		displayFolder: Color_Definitions_Theme1
+		lineageTag: 0048c7ce-c43c-4ff7-bda6-cdd1a6e1b37b
+
 	partition _Measures = m
 		mode: import
 		source =
